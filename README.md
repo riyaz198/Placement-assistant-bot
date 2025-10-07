@@ -1,3 +1,70 @@
+
+# Placement Assistant Bot
+
+This project is a Placement Assistant Bot with a React frontend and a FastAPI backend. It helps students with placement-related queries using verified data and a local Llama language model.
+
+## Features
+- React-based chat frontend
+- FastAPI backend with semantic search and Llama LLM fallback
+- Uses local Llama model for natural language answers
+- Placement data stored in CSV and indexed with FAISS
+
+---
+
+## Setup Instructions
+
+### 1. Prerequisites
+- **Python 3.10+** (for backend)
+- **Node.js 16+** (for frontend)
+- **Ollama** (for running Llama models locally)
+
+### 2. Backend Setup
+1. Navigate to the `backend` directory:
+	```sh
+	cd backend
+	```
+2. Install Python dependencies:
+	```sh
+	pip install -r requirements.txt
+	```
+3. Download and install Ollama from [https://ollama.com/](https://ollama.com/).
+4. Pull the Llama model (e.g., llama3):
+	```sh
+	ollama pull llama3
+	```
+5. Start the Ollama server (if not already running):
+	```sh
+	ollama serve
+	```
+6. Make sure the Llama model is available at the path specified in `app.py` (default: `backend/model/llama-3.2`). Adjust the path if needed.
+7. Run the FastAPI server:
+	```sh
+	uvicorn app:app --reload
+	```
+
+### 3. Frontend Setup
+1. Navigate to the `frontend` directory:
+	```sh
+	cd frontend
+	```
+2. Install dependencies:
+	```sh
+	npm install
+	```
+3. Start the React app:
+	```sh
+	npm start
+	```
+
+---
+
+## Notes
+- The backend requires a running Ollama server with the Llama model installed.
+- If you change the Llama model or its path, update `LLAMA_MODEL_PATH` in `backend/app.py`.
+- Placement data is loaded from `backend/placement_data.csv`.
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
